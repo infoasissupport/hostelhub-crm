@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Reset & base
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  color: var(--text);
+  line-height: 1.25;
+}
+
+p { margin: 0 0 var(--sp-3); }
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { color: #0b6ad6; }
+
+img, svg, canvas { max-width: 100%; display: block; }
+
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+input, select, textarea { font: inherit; color: inherit; }
+
+table { border-collapse: collapse; width: 100%; }
+
+ul, ol { margin: 0; padding: 0; }
+
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+::selection { background: var(--yellow); color: var(--navy-900); }
+
+/* Thin, unobtrusive scrollbars */
+* { scrollbar-width: thin; scrollbar-color: #c3d0e2 transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #c3d0e2; border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+.visually-hidden-text {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}

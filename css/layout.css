@@ -1,0 +1,62 @@
+/* ==========================================================================
+   App shell — CSS Grid layout
+   ========================================================================== */
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  grid-template-rows: var(--header-h) minmax(0, 1fr);
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main";
+  min-height: 100vh;
+  transition: grid-template-columns var(--t-slow);
+}
+
+.app-shell.is-collapsed { grid-template-columns: var(--sidebar-w-collapsed) minmax(0, 1fr); }
+
+.app-sidebar { grid-area: sidebar; }
+.app-header  { grid-area: header; }
+.app-main    { grid-area: main; min-width: 0; }
+
+.app-main {
+  padding: var(--gutter) var(--gutter) var(--sp-8);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--gutter);
+}
+
+/* --- Page heading ------------------------------------------------------- */
+.page-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-4);
+}
+.page-head__title { font-size: var(--fs-2xl); font-weight: var(--fw-black); letter-spacing: -0.02em; }
+.page-head__sub { color: var(--text-2); font-size: var(--fs-md); margin-top: 2px; }
+.page-head__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); justify-content: flex-end; }
+
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: var(--fs-sm); color: var(--text-2); margin-bottom: 4px; }
+.crumbs a { color: var(--text-2); }
+.crumbs a:hover { color: var(--blue); }
+.crumbs .bi { font-size: 10px; color: var(--text-3); }
+.crumbs span:last-child { color: var(--text); font-weight: var(--fw-semibold); }
+
+/* --- Generic grids ------------------------------------------------------- */
+.grid { display: grid; gap: var(--gutter); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-auto { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.grid-sidebar { grid-template-columns: minmax(0, 1fr) 340px; }
+.grid-gap-sm { gap: var(--sp-3); }
+.span-2 { grid-column: span 2; }
+.span-all { grid-column: 1 / -1; }
+
+.stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-4); align-content: start; }
+.stack-sm { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-2); align-content: start; }
+.row-flex { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); flex-wrap: wrap; }
+
+.app-footer { color: var(--text-3); font-size: var(--fs-xs); text-align: center; padding-top: var(--sp-2); }

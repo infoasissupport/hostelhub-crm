@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Modals, drawers & confirm dialog (Bootstrap components, HostelHub skin)
+   ========================================================================== */
+.modal.hh-modal .modal-content {
+  border: 0;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.hh-modal .modal-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.hh-modal .modal-title { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: var(--fw-bold); display: flex; align-items: center; gap: 10px; }
+.hh-modal .modal-body { padding: 22px; }
+.hh-modal .modal-footer {
+  padding: 14px 22px;
+  border-top: 1px solid var(--border);
+  background: #FAFCFF;
+  gap: 8px;
+}
+.hh-modal .modal-footer > * { margin: 0; }
+.hh-modal .modal-footer .footer-left { margin-right: auto; display: flex; gap: 8px; }
+.modal-backdrop.show { opacity: .55; background: var(--navy-900); }
+
+/* Drawer (offcanvas end) */
+.offcanvas.hh-drawer {
+  --bs-offcanvas-width: 560px;
+  border-left: 0;
+  box-shadow: var(--shadow-lg);
+}
+.hh-drawer .offcanvas-header { padding: 18px 22px; border-bottom: 1px solid var(--border); }
+.hh-drawer .offcanvas-title { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: var(--fw-bold); }
+.hh-drawer .offcanvas-body { padding: 22px; }
+.hh-drawer .drawer-foot { padding: 14px 22px; border-top: 1px solid var(--border); background: #FAFCFF; display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+
+/* Lightweight confirm/prompt overlay — sits above any open modal */
+.confirm-overlay {
+  position: fixed; inset: 0;
+  background: rgba(11, 25, 48, .55);
+  display: grid; place-items: center;
+  z-index: var(--z-confirm);
+  padding: 16px;
+  animation: fade-in var(--t);
+}
+.confirm-box {
+  width: min(420px, 100%);
+  background: var(--card);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  display: grid; gap: 14px;
+  animation: pop-in var(--t-slow);
+}
+.confirm-box__icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 1.5rem; }
+.confirm-box h5 { font-size: var(--fs-lg); }
+.confirm-box p { color: var(--text-2); margin: 0; font-size: var(--fs-sm); }
+.confirm-box__actions { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes pop-in { from { opacity: 0; transform: scale(.96) translateY(8px); } }
+
+/* View/detail modal helpers */
+.detail-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.detail-head h3 { font-size: var(--fs-xl); }
+.detail-block { border: 1px solid var(--border); border-radius: var(--r-md); padding: 16px; display: grid; gap: 12px; }
+.detail-block__title { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .07em; color: var(--text-2); font-weight: var(--fw-bold); }
+
+/* Bootstrap tooltip skin */
+.tooltip { --bs-tooltip-bg: var(--navy-900); --bs-tooltip-font-size: .75rem; --bs-tooltip-border-radius: 6px; }
+
+/* Dropdown menu skin (row action menus etc.) */
+.dropdown-menu.hh-menu {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-lg);
+  padding: 6px;
+  font-size: var(--fs-sm);
+  min-width: 190px;
+  z-index: var(--z-dropdown);
+}
+.hh-menu .dropdown-item { display: flex; align-items: center; gap: 10px; border-radius: var(--r-xs); padding: 7px 10px; color: var(--text); }
+.hh-menu .dropdown-item .bi { color: var(--text-2); font-size: 1rem; }
+.hh-menu .dropdown-item:hover { background: var(--bg); }
+.hh-menu .dropdown-item.is-danger, .hh-menu .dropdown-item.is-danger .bi { color: var(--red); }
+.hh-menu .dropdown-item.is-danger:hover { background: var(--red-100); }
+.hh-menu .dropdown-divider { margin: 4px 0; border-color: var(--border); }

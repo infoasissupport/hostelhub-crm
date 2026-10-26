@@ -1,0 +1,19 @@
+/* Fees & Payments — page-specific styles (invoice view / payment dialog styles come from invoices.css) */
+.fp-tabs { background: var(--card); border-radius: var(--r-lg); box-shadow: var(--shadow-sm); padding: 0 var(--sp-4); border: 1px solid rgba(225, 234, 245, .7); }
+.fp-tabs button { padding: 14px 14px 12px; }
+.fp-tabs button .bi { margin-right: 6px; }
+.fp-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: var(--gutter); }
+.fp-donut { grid-template-columns: minmax(130px, 170px) minmax(0, 1fr); align-self: center; }
+.fp-donut .donut { max-width: 170px; }
+.fp-cats { display: grid; gap: 14px; }
+.fp-cat { display: grid; gap: 6px; font-size: var(--fs-sm); }
+.fp-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+.fp-cat-total { border-top: 1px solid var(--border); padding-top: 10px; font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
+.fp-recent { list-style: none; margin: 0; padding: 0; display: grid; }
+.fp-recent li + li { border-top: 1px solid var(--border); }
+.fp-recent button { width: 100%; border: 0; background: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 9px 6px; border-radius: var(--r-sm); text-align: left; }
+.fp-recent button:hover { background: var(--bg); }
+@media (max-width: 1100px) { .fp-grid { grid-template-columns: minmax(0, 1fr); } }
+.fp-recent .person { min-width: 0; }
+.fp-recent .person > div { min-width: 0; }
+.fp-recent .person__meta { white-space: normal; }

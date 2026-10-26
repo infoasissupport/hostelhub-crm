@@ -1,0 +1,21 @@
+/* Mess Management module — page-specific styles */
+.mod-tabs > .tabs-hh { padding: 0 var(--sp-5); border-bottom: 0; }
+.ms-month { width: 170px; }
+.ms-pct { display: grid; grid-template-columns: 44px minmax(60px, 1fr); gap: 8px; align-items: center; min-width: 130px; }
+.ms-summary { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ms-summary > div { background: #FAFCFF; padding: 12px var(--sp-5); display: grid; gap: 2px; min-width: 0; }
+.ms-summary span { font-size: var(--fs-xs); color: var(--text-2); text-transform: uppercase; letter-spacing: .05em; font-weight: var(--fw-semibold); }
+.ms-summary b { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: var(--fw-black); overflow-wrap: anywhere; }
+.ms-names { display: flex; flex-wrap: wrap; gap: 6px; }
+.ms-names a { padding: 4px 10px; border: 1px solid var(--border); border-radius: var(--r-pill); font-size: var(--fs-xs); color: var(--text); text-decoration: none; }
+.ms-names a:hover { border-color: var(--border-strong); background: #F8FBFF; }
+.card-hh__tools .date-range .input-hh { width: 150px; height: 34px; font-size: var(--fs-xs); }
+@media (max-width: 1100px) { .ms-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 768px) {
+  .mod-tabs > .tabs-hh { padding: 0 var(--sp-3); }
+  .ms-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ms-summary > div { padding: 10px var(--sp-3); }
+  .ms-month { width: auto; flex: 1 1 140px; }
+  .card-hh__tools .date-range { flex-wrap: wrap; width: 100%; }
+  .card-hh__tools .date-range .input-hh { flex: 1 1 120px; width: auto; }
+}

@@ -1,0 +1,7 @@
+/* Visitors — page-specific styles */
+.table-hh tbody tr.vis-row--inside { box-shadow: inset 3px 0 0 var(--green); }
+.vis-resinfo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; padding: 10px 12px; border: 1px dashed var(--border-strong); border-radius: var(--r-md); background: #FAFCFF; font-size: var(--fs-sm); min-width: 0; }
+.vis-resinfo__meta { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--text-2); align-items: center; }
+.vis-resinfo__meta .bi { color: var(--text-3); margin-right: 4px; }
+.vis-dur { text-align: right; }
+@media (max-width: 576px) { .vis-dur { text-align: left; grid-column: 1 / -1; } }

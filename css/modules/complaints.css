@@ -1,0 +1,9 @@
+/* Complaints — page-specific styles */
+.cmp-title { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: center; min-width: 220px; max-width: 360px; }
+.cmp-age { text-align: right; }
+.cmp-timeline li.is-green::before { border-color: var(--green); }
+.cmp-timeline li.is-orange::before { border-color: var(--orange); }
+.cmp-timeline li.is-red::before { border-color: var(--red); }
+.cmp-timeline li.is-gray::before { border-color: var(--text-3); }
+.field label.is-req::after { content: " *"; color: var(--red); }
+@media (max-width: 576px) { .cmp-age { text-align: left; grid-column: 1 / -1; } }

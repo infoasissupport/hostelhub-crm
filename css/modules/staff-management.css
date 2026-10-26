@@ -1,0 +1,61 @@
+/* Staff Management — page-specific styles */
+.sm-tabbar { padding: 0 var(--sp-5); }
+.sm-tabbar .tabs-hh { border-bottom: 0; }
+.sm-salary-tag { text-align: right; }
+.sm-salary-tag .money { font-size: 1.35rem; }
+
+/* department strip */
+.sm-dept__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.sm-dept__item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; text-align: left; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--card); transition: border-color var(--t-fast), background var(--t-fast); }
+.sm-dept__item:hover { border-color: var(--border-strong); background: #F8FBFF; }
+.sm-dept__item.is-active { border-color: var(--yellow); background: var(--yellow-100); }
+.sm-dept__name { font-weight: var(--fw-semibold); font-size: var(--fs-sm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sm-dept__item b { font-family: var(--font-display); font-size: 1.1rem; grid-row: span 2; align-self: center; }
+.sm-dept__item small { color: var(--text-2); font-size: var(--fs-xs); }
+
+/* attendance marks */
+.sa-cell { width: 26px; height: 26px; border-radius: 6px; display: inline-grid; place-items: center; font-size: 11px; font-weight: 700; flex: 0 0 auto; }
+.sa-P { background: var(--green-100); color: var(--green); }
+.sa-A { background: var(--red-100); color: var(--red); }
+.sa-L { background: var(--blue-100); color: var(--blue); }
+.sa-H { background: #EEF2F7; color: var(--text-2); }
+.sa-none { background: #F4F7FC; color: var(--text-3); }
+.sa-strip { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px 4px; }
+.sa-strip__day { display: grid; justify-items: center; gap: 2px; }
+.sa-strip__day small { font-size: 10px; color: var(--text-2); white-space: nowrap; }
+
+.sa-summary { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.sa-chip { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--r-md); min-width: 0; }
+.sa-chip .sa-cell, .sa-chip .chip-icon { width: 34px; height: 34px; font-size: 13px; }
+.sa-chip b { display: block; font-family: var(--font-display); font-size: 1.15rem; line-height: 1.1; }
+.sa-chip small { color: var(--text-2); font-size: var(--fs-xs); white-space: nowrap; }
+.sa-toolbar { gap: 8px; }
+.sa-date { width: 150px; height: 34px; }
+.sa-month { width: 160px; height: 34px; }
+.sa-toggle { display: inline-flex; gap: 4px; }
+.sa-btn { width: 34px; height: 30px; border-radius: var(--r-sm); border: 1px solid var(--border); background: var(--card); color: var(--text-2); font-size: var(--fs-xs); font-weight: var(--fw-bold); transition: background var(--t-fast), color var(--t-fast); }
+.sa-btn:hover { border-color: var(--border-strong); }
+.sa-btn--P.is-active { background: var(--green); border-color: var(--green); color: #fff; }
+.sa-btn--A.is-active { background: var(--red); border-color: var(--red); color: #fff; }
+.sa-btn--L.is-active { background: var(--blue); border-color: var(--blue); color: #fff; }
+.sa-btn--H.is-active { background: var(--text-2); border-color: var(--text-2); color: #fff; }
+.sa-bulk--P .bi { color: var(--green); } .sa-bulk--A .bi { color: var(--red); } .sa-bulk--L .bi { color: var(--blue); } .sa-bulk--H .bi { color: var(--text-2); }
+.sa-table tbody td { padding-top: 8px; padding-bottom: 8px; }
+.sa-pct { display: grid; grid-template-columns: minmax(70px, 1fr) 44px; gap: 8px; align-items: center; min-width: 130px; }
+.sa-pct b { font-size: var(--fs-xs); text-align: right; }
+
+.sm-linklist { list-style: none; display: grid; gap: 8px; }
+.sm-linklist li { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: var(--fs-sm); }
+.sm-linklist li > span { display: inline-flex; gap: 4px; }
+
+@media (max-width: 992px) { .sa-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 576px) {
+  .sa-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm-tabbar { padding: 0 var(--sp-3); }
+  .sm-salary-tag { text-align: left; grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+  .sa-table th:nth-child(n+2):nth-child(-n+4), .sa-table td:nth-child(n+2):nth-child(-n+4) { display: none; }
+  .sa-table td, .sa-table th { padding-left: 10px !important; padding-right: 10px !important; }
+  .sa-btn { width: 30px; }
+}

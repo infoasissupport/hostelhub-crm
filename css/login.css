@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Sign-in screen
+   ========================================================================== */
+.login-page { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); background: var(--bg); }
+.login-hero {
+  background: radial-gradient(circle at 80% 10%, rgba(255, 210, 31, .14), transparent 40%), var(--navy-900);
+  color: #fff; padding: 48px 56px; display: grid; grid-template-rows: auto 1fr auto; gap: 32px;
+}
+.login-hero .brand { padding: 0; }
+.login-hero__copy { align-self: center; display: grid; gap: 18px; max-width: 520px; }
+.login-hero__copy h1 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: var(--fw-black); letter-spacing: -0.02em; }
+.login-hero__copy h1 b { color: var(--yellow); font-weight: inherit; }
+.login-hero__copy p { color: #C9D5E7; font-size: var(--fs-md); margin: 0; }
+.login-hero img.hero-art { width: 100%; max-width: 480px; }
+.login-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; list-style: none; color: #DCE6F5; font-size: var(--fs-sm); }
+.login-features li { display: flex; gap: 8px; align-items: center; }
+.login-features .bi { color: var(--yellow); }
+.login-hero small { color: #8EA2C2; }
+.login-panel { display: grid; place-items: center; padding: 32px 20px; }
+.login-card { width: min(420px, 100%); background: var(--card); border-radius: var(--r-xl); box-shadow: var(--shadow-md); padding: 32px; display: grid; gap: 18px; }
+.login-card h2 { font-size: var(--fs-xl); }
+.login-card .demo-note { background: var(--yellow-100); border: 1px dashed #E8C200; color: #7A5C00; border-radius: var(--r-md); padding: 10px 12px; font-size: var(--fs-xs); }
+.login-card .btn-hh--lg { width: 100%; justify-content: center; }
+.pw-wrap { position: relative; }
+.pw-wrap button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); border: 0; background: none; color: var(--text-2); padding: 6px; }
+@media (max-width: 900px) {
+  .login-page { grid-template-columns: minmax(0, 1fr); }
+  .login-hero { padding: 28px 20px; grid-template-rows: auto; }
+  .login-hero img.hero-art, .login-features, .login-hero small { display: none; }
+}

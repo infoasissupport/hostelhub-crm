@@ -1,0 +1,44 @@
+/* Menu Management module — page-specific styles */
+.mod-tabs > .tabs-hh { padding: 0 var(--sp-5); border-bottom: 0; }
+.mn-items { max-width: 420px; min-width: 220px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+.mn-wk-date { width: 150px; height: 34px; font-size: var(--fs-xs); }
+
+/* Week planner: 7 day columns, each holding one cell per meal */
+.mn-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.mn-day { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.mn-day__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 6px; padding: 8px 10px; border-radius: var(--r-sm); background: #F4F7FC; }
+.mn-day__head b { font-family: var(--font-display); }
+.mn-day__head span:not(.badge-hh) { font-size: var(--fs-xs); color: var(--text-2); }
+.mn-day.is-today .mn-day__head { background: var(--yellow-100); box-shadow: inset 0 0 0 1px #FBE48A; }
+.mn-day.is-past .mn-cell { opacity: .78; }
+.mn-cell {
+  display: grid; gap: 4px; text-align: left; min-height: 112px; align-content: start;
+  padding: 10px; border-radius: var(--r-md); border: 1px solid var(--border); background: var(--card);
+  color: var(--text); font-size: var(--fs-xs); min-width: 0; transition: box-shadow var(--t-fast), border-color var(--t-fast);
+}
+.mn-cell:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+.mn-cell:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.mn-cell__meal { font-weight: var(--fw-bold); font-size: var(--fs-sm); display: flex; justify-content: space-between; gap: 6px; }
+.mn-cell__meal small { font-weight: var(--fw-medium); color: var(--text-2); font-size: 10.5px; white-space: nowrap; }
+.mn-cell__items { color: var(--text); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.mn-cell__meta { color: var(--text-2); font-size: 10.5px; margin-top: auto; }
+.mn-cell.is-filled { border-left-width: 4px; }
+.tone-edge-yellow { border-left-color: var(--yellow) !important; }
+.tone-edge-blue { border-left-color: var(--blue) !important; }
+.tone-edge-green { border-left-color: var(--green) !important; }
+.tone-edge-purple { border-left-color: var(--purple) !important; }
+.tone-edge-pink { border-left-color: var(--pink) !important; }
+.mn-cell.is-empty { border-style: dashed; background: #FAFCFF; color: var(--text-2); }
+.mn-cell.is-empty:hover { background: var(--yellow-100); border-color: #FBE48A; color: var(--text); }
+.mn-cell__add { display: inline-flex; align-items: center; gap: 4px; font-weight: var(--fw-semibold); color: var(--blue); }
+
+@media (max-width: 1280px) { .mn-week { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 768px) {
+  .mod-tabs > .tabs-hh { padding: 0 var(--sp-3); }
+  .mn-week { grid-template-columns: minmax(0, 1fr); }
+  .mn-day { grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); }
+  .mn-day__head { grid-column: 1 / -1; }
+  .mn-cell { min-height: 0; }
+  .mn-wk-date { width: 100%; }
+}
+@media (max-width: 480px) { .mn-day { grid-template-columns: minmax(0, 1fr); } }

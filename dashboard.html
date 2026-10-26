@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard · HostelHub</title>
+  <meta name="description" content="HostelHub Management System — Dashboard">
+  <link rel="icon" href="assets/images/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="dashboard" data-root="">
+  <a class="visually-hidden-focusable" href="#main">Skip to content</a>
+  <div class="app-shell" id="appShell">
+    <aside class="app-sidebar" id="appSidebar" aria-label="Main navigation"></aside>
+    <header class="app-header" id="appHeader"></header>
+    <main class="app-main" id="main">
+      <div class="dash-head">
+        <div>
+          <h1>Welcome Back, <span id="welcomeName">Admin</span>! <span aria-hidden="true">👋</span></h1>
+          <p>Here's what's happening in your hostel <span id="periodText">today</span>.</p>
+        </div>
+        <div class="dash-controls">
+          <label class="branch-select"><i class="bi bi-house-door-fill"></i><span class="visually-hidden-text">Branch</span><select class="select-hh" id="branchFilter" aria-label="Branch"></select></label>
+          <div class="segmented" id="periodSeg" role="group" aria-label="Period">
+            <button type="button" data-period="today">Today</button>
+            <button type="button" data-period="week">This Week</button>
+            <button type="button" data-period="month">This Month</button>
+            <button type="button" data-period="year">This Year</button>
+          </div>
+          <div class="dropdown">
+            <button type="button" class="range-btn" id="rangeBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-label="Custom date range" title="Custom date range"><i class="bi bi-calendar3"></i></button>
+            <div class="dropdown-menu dropdown-menu-end hh-dropdown range-panel">
+              <div class="section-title mb-2">Custom date range</div>
+              <div class="field"><label for="rangeFrom">From</label><input type="date" class="input-hh" id="rangeFrom"></div>
+              <div class="field"><label for="rangeTo">To</label><input type="date" class="input-hh" id="rangeTo"></div>
+              <div class="field-error" id="rangeError" style="display:none;margin-bottom:8px"></div>
+              <div class="row-flex" style="justify-content:flex-end"><button type="button" class="btn-hh btn-hh--sm" id="rangeClear">Clear</button><button type="button" class="btn-hh btn-hh--sm btn-hh--primary" id="rangeApply">Apply range</button></div>
+            </div>
+          </div>
+          <button type="button" class="range-btn" id="customizeBtn" aria-label="Customize dashboard" title="Customize dashboard widgets"><i class="bi bi-sliders"></i></button>
+        </div>
+      </div>
+
+      <div class="dash-grid" id="dashGrid">
+        <!-- KPI cards -->
+        <a class="kpi w-kpi" data-widget="kpis" href="pages/residents.html" id="kpiResidents">
+          <span class="chip-icon chip-icon--lg tone-blue"><i class="bi bi-people-fill"></i></span>
+          <span class="kpi__body">
+            <span class="kpi__top"><span class="kpi__label">Total Residents</span><span class="sparkline"><canvas id="sparkResidents" aria-hidden="true"></canvas></span></span>
+            <span class="kpi__value-row"><span class="kpi__value" data-k="residents">0</span><span class="trend" data-k="residentsTrend"></span></span>
+            <span class="kpi__meta"><span>Active: <b data-k="active">0</b></span><span>Inactive: <b data-k="inactive">0</b></span></span>
+          </span>
+        </a>
+        <a class="kpi w-kpi" data-widget="kpis" href="pages/rooms-beds.html#beds" id="kpiBeds">
+          <span class="chip-icon chip-icon--lg tone-green" data-bed-icon></span>
+          <span class="kpi__body">
+            <span class="kpi__top"><span class="kpi__label">Occupied Beds</span><span class="sparkline"><canvas id="sparkBeds" aria-hidden="true"></canvas></span></span>
+            <span class="kpi__value-row"><span class="kpi__value" data-k="beds">0</span><span class="trend trend--up" data-k="bedsPct"></span></span>
+            <span class="kpi__meta"><span>Vacant: <b data-k="vacant">0</b></span><span data-k="blockedWrap">Blocked: <b data-k="blocked">0</b></span></span>
+          </span>
+        </a>
+        <a class="kpi w-kpi" data-widget="kpis" href="pages/meal-attendance.html#history" id="kpiMeals">
+          <span class="chip-icon chip-icon--lg tone-orange"><i class="bi bi-fork-knife"></i></span>
+          <span class="kpi__body">
+            <span class="kpi__top"><span class="kpi__label" data-k="mealsLabel">Today's Meals</span><span class="sparkline"><canvas id="sparkMeals" aria-hidden="true"></canvas></span></span>
+            <span class="kpi__value-row"><span class="kpi__value" data-k="meals">0</span><span class="trend" data-k="mealsTrend"></span></span>
+            <span class="kpi__meta"><span>B: <b data-k="mB">0</b></span><span>L: <b data-k="mL">0</b></span><span>D: <b data-k="mD">0</b></span></span>
+          </span>
+        </a>
+        <a class="kpi w-kpi" data-widget="kpis" href="pages/fees-payments.html#outstanding" id="kpiFees">
+          <span class="chip-icon chip-icon--lg tone-purple"><i class="bi bi-wallet2"></i></span>
+          <span class="kpi__body">
+            <span class="kpi__top"><span class="kpi__label">Pending Fees</span><span class="sparkline"><canvas id="sparkFees" aria-hidden="true"></canvas></span></span>
+            <span class="kpi__value-row"><span class="kpi__value" data-k="pending">₹0</span><span class="trend" data-k="pendingTrend"></span></span>
+            <span class="kpi__meta"><span>Hostel: <b data-k="pHostel">₹0</b></span><span>Mess: <b data-k="pMess">₹0</b></span></span>
+          </span>
+        </a>
+
+        <!-- Meal attendance -->
+        <section class="card-hh w-5" data-widget="meals" aria-labelledby="wMealsT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-fork-knife"></i></span><h2 class="card-hh__title" id="wMealsT">Meal Attendance</h2>
+            <div class="card-hh__tools"><select class="select-hh" id="mealRange" style="height:34px;width:auto" aria-label="Meal attendance range"><option value="7">This Week</option><option value="14">Last 14 Days</option><option value="month">This Month</option></select></div></div>
+          <div class="chart-legend"><span><i style="background:#FFC400"></i>Breakfast</span><span><i style="background:#1683FF"></i>Lunch</span><span><i style="background:#10B981"></i>Dinner</span></div>
+          <div class="chart-box"><canvas id="chartMeals" role="img" aria-label="Meal attendance bar chart"></canvas></div>
+        </section>
+
+        <!-- Occupancy -->
+        <section class="card-hh w-3" data-widget="occupancy" aria-labelledby="wOccT">
+          <div class="card-hh__head card-hh__head"><span class="chip-icon" data-bed-icon></span><h2 class="card-hh__title" id="wOccT">Hostel Occupancy</h2><span></span></div>
+          <div class="donut-wrap">
+            <div class="donut"><canvas id="chartOcc" role="img" aria-label="Occupancy doughnut chart"></canvas><div class="donut__center"><strong data-k="occPct">0%</strong><small>Occupied</small></div></div>
+            <ul class="donut-legend">
+              <li><i style="background:#FFC400"></i><span>Occupied Beds</span><b data-k="occ1">0</b></li>
+              <li><i style="background:#D6DDE8"></i><span>Vacant Beds</span><b data-k="occ2">0</b></li>
+              <li><i style="background:#F04452"></i><span title="Beds blocked for repair or rooms under maintenance">Blocked</span><b data-k="occ3">0</b></li>
+              <li><i style="background:transparent;border:2px solid #102347"></i><span>Total Beds</span><b data-k="occ4">0</b></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Today's menu -->
+        <section class="card-hh w-4" data-widget="menu" aria-labelledby="wMenuT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-fork-knife"></i></span><h2 class="card-hh__title" id="wMenuT" style="color:var(--blue)">Today's Menu</h2>
+            <div class="card-hh__tools"><a class="link-hh" href="pages/menu-management.html#weekly">View Full Menu <i class="bi bi-arrow-right"></i></a></div></div>
+          <div class="menu-list" id="menuList"></div>
+        </section>
+
+        <!-- Revenue vs expenses -->
+        <section class="card-hh w-5" data-widget="revenue" aria-labelledby="wRevT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-bar-chart-fill"></i></span><h2 class="card-hh__title" id="wRevT">Monthly Revenue vs Expenses</h2>
+            <div class="card-hh__tools"><select class="select-hh" id="revRange" style="height:34px;width:auto" aria-label="Revenue range"><option value="year">This Year</option><option value="6">Last 6 Months</option><option value="12">Last 12 Months</option></select></div></div>
+          <div class="chart-legend" style="justify-content:flex-end"><span><i style="background:#FFC400"></i>Revenue</span><span><i style="background:#1683FF"></i>Expenses</span></div>
+          <div class="chart-box"><canvas id="chartRev" role="img" aria-label="Revenue versus expenses bar chart"></canvas></div>
+        </section>
+
+        <!-- Expense breakdown -->
+        <section class="card-hh w-3" data-widget="expenses" aria-labelledby="wExpT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-receipt"></i></span><h2 class="card-hh__title" id="wExpT">Expense Breakdown</h2>
+            <div class="card-hh__tools"><select class="select-hh" id="expRange" style="height:34px;width:auto" aria-label="Expense range"><option value="month">This Month</option><option value="lastMonth">Last Month</option><option value="year">This Year</option><option value="dash">Dashboard period</option></select></div></div>
+          <div class="donut-wrap" id="expWrap">
+            <div class="donut"><canvas id="chartExp" role="img" aria-label="Expense breakdown doughnut chart"></canvas><div class="donut__center"><strong data-k="expTotal" style="font-size:1.2rem">₹0</strong><small>Total Expense</small></div></div>
+            <ul class="donut-legend" id="expLegend"></ul>
+          </div>
+        </section>
+
+        <!-- Quick actions -->
+        <section class="card-hh w-4" data-widget="quick" aria-labelledby="wQaT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-lightning-charge-fill"></i></span><h2 class="card-hh__title" id="wQaT">Quick Actions</h2>
+            <div class="card-hh__tools"><button type="button" class="btn-hh btn-hh--sm btn-hh--soft-blue" id="customizeQa"><i class="bi bi-magic"></i>Customize</button></div></div>
+          <div class="qa-grid" id="qaGrid"></div>
+        </section>
+
+        <!-- Recent residents -->
+        <section class="card-hh w-6" data-widget="recentResidents" aria-labelledby="wRrT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-person-fill"></i></span><h2 class="card-hh__title" id="wRrT">Recent Residents</h2>
+            <div class="card-hh__tools"><a class="link-hh" href="pages/residents.html">View All <i class="bi bi-arrow-right"></i></a></div></div>
+          <div class="table-wrap"><table class="table-hh dash-table" id="recentResidents"></table></div>
+        </section>
+
+        <!-- Recent transactions -->
+        <section class="card-hh w-6" data-widget="transactions" aria-labelledby="wTxT">
+          <div class="card-hh__head"><span class="chip-icon"><i class="bi bi-receipt-cutoff"></i></span><h2 class="card-hh__title" id="wTxT">Recent Transactions <small class="text-2" style="font-size:12px;font-weight:500" id="txPeriod"></small></h2>
+            <div class="card-hh__tools"><a class="link-hh" href="pages/fees-payments.html#payments">View All <i class="bi bi-arrow-right"></i></a></div></div>
+          <div class="table-wrap"><table class="table-hh dash-table" id="recentTx"></table></div>
+        </section>
+      </div>
+
+      <footer class="app-footer">HostelHub Management System · Demo build · © <span data-year></span></footer>
+    </main>
+  </div>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="js/demo-data.js"></script>
+  <script defer src="js/storage.js"></script>
+  <script defer src="js/common.js"></script>
+  <script defer src="js/validation.js"></script>
+  <script defer src="js/notifications.js"></script>
+  <script defer src="js/export.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/dashboard.js"></script>
+</body>
+</html>
